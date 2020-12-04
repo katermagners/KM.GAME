@@ -105,6 +105,7 @@ $('section').each( function(i,e) {
 
       document.getElementById("timer")
       .innerHTML =
+      '<div><span>Il reste : </span></div>' +
       '<div>' + d + '<span>days</span></div>' +
       '<div>' + h + '<span>hours</span></div>' +
       '<div>' + m + '<span>minutes</span></div>' +
