@@ -251,6 +251,7 @@ div#timer {
     right: 30px;
     top: 30px;
     display: flex;
+    align-items: flex-end;
 }
 div#timer > div{
     margin-left: 15px;
