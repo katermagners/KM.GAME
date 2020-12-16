@@ -46,37 +46,41 @@ $('section').each( function(i,e) {
 // Command Input------------------------------
 
   $('input.controller[type="text"]').keyup(function(e){
-
     if(e.which == 13){// ENTER key pressed
+        var destination = $('input.controller[type="text"]').val();
+        console.log(destination);
+        if (destination == 02 || destination == 03 || destination == 04 || destination == 05 || destination == 06 || destination == 'final' ) {
+          console.log('ne pas afficher');
+        }else{
+          $('.command').hide();
+          console.log('afficher');
 
-      $('.command').hide();
-      var destination = $('input.controller[type="text"]').val();
+          // Display section with id == destination and hide all others
+          $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
 
-      // Display section with id == destination and hide all others
-      $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+          // If destination does not match our array of section ids, display error section
+          if($.inArray(destination, sectionArray) == -1){
+            $('#error').addClass('open');
+            $('#error').siblings().removeClass('open');
+          }
 
-      // If destination does not match our array of section ids, display error section
-      if($.inArray(destination, sectionArray) == -1){
-        $('#error').addClass('open');
-        $('#error').siblings().removeClass('open');
-      }
+          if (destination == 02) {
+            var trigger = $('.open');
+          }else {
+            var trigger = $('.open span');
+          }
 
-      if (destination == 02) {
-        var trigger = $('.open');
-      }else {
-        var trigger = $('.open span');
-      }
+          // All sections with class .open init textTyper
+          trigger.textTyper({
+            speed:5,
+            afterAnimation:function(){
+              $('.command').fadeIn();
+              $('input.controller[type="text"]').focus();
+              $('input.controller[type="text"]').val('');
+            }
+          });
 
-      // All sections with class .open init textTyper
-      trigger.textTyper({
-        speed:5,
-        afterAnimation:function(){
-          $('.command').fadeIn();
-          $('input.controller[type="text"]').focus();
-          $('input.controller[type="text"]').val('');
-        }
-      });
-
+      }// end if TEMPORAIRE
     }// end if ENTER key pressed
 
   });// end keyup function
