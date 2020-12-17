@@ -49,7 +49,7 @@ $('section').each( function(i,e) {
     if(e.which == 13){// ENTER key pressed
         var destination = $('input.controller[type="text"]').val();
         console.log(destination);
-        if (destination == 04 || destination == 05 || destination == 06 || destination == 'final' ) {
+        if (destination == 06 || destination == 'final' ) {
           console.log('ne pas afficher');
           destination = 'go';
         }
