@@ -48,11 +48,7 @@ $('section').each( function(i,e) {
   $('input.controller[type="text"]').keyup(function(e){
     if(e.which == 13){// ENTER key pressed
         var destination = $('input.controller[type="text"]').val();
-        console.log(destination);
-        if (destination == 06 || destination == 'final' ) {
-          console.log('ne pas afficher');
-          destination = 'go';
-        }
+        
         $('.command').hide();
         console.log('afficher');
 
